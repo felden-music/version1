@@ -40,7 +40,7 @@
   :where(.hero ~ section){box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
   .gallery{box-shadow:0 0 0 100vmax var(--section-bg)!important}
   .gallery{--section-bg:var(--ink)}
-  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(var(--zoom,1));transform-origin:50% 45%;will-change:transform}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(var(--zoom,1));transform-origin:50% 45%}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(20,15,5,.55) 100%)}
   .hero .title{position:absolute;z-index:2;left:clamp(16px,6vw,80px);bottom:calc(max(0px, 100% - 100svh) + clamp(18px,6vw,96px))}
   .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(56px,17vw,220px);line-height:.85;letter-spacing:-.01em;opacity:0;animation:rise 1.6s .3s ease-out forwards}
@@ -155,7 +155,6 @@
   /* Band: Medien und Links */
   .media{margin-top:clamp(64px,8vw,110px)}
   .video-head h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(36px,5vw,64px);line-height:1}
-  .band .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(48px,6vw,80px)}
   .embed{position:relative;overflow:hidden}
   .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .sp{height:352px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
@@ -185,6 +184,8 @@
   .form:hover{background:var(--ink);color:var(--bg)}
   .form:hover span{color:#cfc8b8}
   @media (max-width:700px){
+    .contact .links{flex-direction:column;align-items:stretch;max-width:340px;margin:0 auto}
+    .contact .links .btn{justify-content:center}
     .forms{grid-template-columns:1fr}
     .dates li{grid-template-columns:1fr}
     .sp-btn{flex-direction:column;text-align:center}
@@ -254,11 +255,6 @@
     </div>
   </div>
 
-  <div class="links reveal">
-    <a class="btn" href="https://www.instagram.com/felden.music" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg> Instagram</a>
-    <a class="btn" href="https://www.youtube.com/@feldengreatmusic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg> YouTube</a>
-    <a class="btn" href="https://open.spotify.com/artist/2TYIWhqs4LQytH0IXlrEBR" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.2 9.6c3.4-1 6.9-.7 9.8.9M7.8 12.6c2.8-.8 5.6-.5 8 .8M8.4 15.4c2.2-.6 4.3-.4 6.2.6"/></svg> Spotify</a>
-  </div>
 </section>
 
 <section class="live" id="live">
@@ -325,9 +321,11 @@
 <section class="contact" id="kontakt">
   <div class="label reveal" style="justify-content:center">Kontakt</div>
   <h2 class="reveal">Hören wir uns.</h2>
-  <p class="reveal">Neuigkeiten, Konzerte und Anfragen – am schnellsten erreicht ihr uns auf Instagram.</p>
+  <p class="reveal">Neuigkeiten, Konzerte und Anfragen – am schnellsten erreicht ihr uns auf Instagram. Unsere Musik gibt es auf YouTube und Spotify.</p>
   <div class="links reveal">
     <a class="btn" href="https://www.instagram.com/felden.music" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg> @felden.music</a>
+    <a class="btn" href="https://www.youtube.com/@feldengreatmusic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg> YouTube</a>
+    <a class="btn" href="https://open.spotify.com/artist/2TYIWhqs4LQytH0IXlrEBR" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.2 9.6c3.4-1 6.9-.7 9.8.9M7.8 12.6c2.8-.8 5.6-.5 8 .8M8.4 15.4c2.2-.6 4.3-.4 6.2.6"/></svg> Spotify</a>
   </div>
 </section>
 
@@ -342,6 +340,12 @@
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('solid', window.scrollY > document.querySelector('.hero').offsetHeight - 70);
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* Startbild ausblenden, solange es vollständig von der Seite verdeckt ist.
+     Verhindert, dass es beim schnellen Scrollen auf dem Handy durchblitzt. */
+  const heroEl = document.querySelector('.hero');
+  const hideHero = () => { heroEl.style.visibility = window.scrollY > heroEl.offsetHeight + 40 ? 'hidden' : ''; };
+  hideHero(); window.addEventListener('scroll', hideHero, {passive:true}); window.addEventListener('resize', hideHero);
 
   /* Herobild bleibt stehen und zoomt beim Scrollen minimal heran */
   const hero = document.querySelector('.hero');
