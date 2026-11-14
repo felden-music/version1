@@ -47,18 +47,19 @@
   .hero p{margin-top:clamp(8px,1.4vw,18px);font-size:12px;letter-spacing:.32em;text-transform:uppercase;opacity:0;animation:rise 1.6s .9s ease-out forwards}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:.95;transform:none}}
 
-  section{padding:clamp(80px,14vw,160px) clamp(16px,6vw,80px)}
+  :root{--space:clamp(64px,9vw,120px)}
+  section{padding:var(--space) clamp(16px,6vw,80px)}
   .label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);margin-bottom:28px;display:flex;align-items:center;gap:14px}
   .label::before{content:"";width:28px;height:1px;background:var(--wheat)}
 
   /* Intro quote */
-  .intro{max-width:980px;margin:0 auto;text-align:center}
+  .intro{max-width:980px;margin:0 auto;text-align:center;padding-bottom:0}
   .intro blockquote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(28px,4.2vw,50px);line-height:1.25}
   .intro .label{justify-content:center}
   .intro .label::after{content:"";width:28px;height:1px;background:var(--wheat)}
 
   /* Bio */
-  .bio{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,110px);max-width:1240px;margin:0 auto;padding-top:0}
+  .bio{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,110px);max-width:1240px;margin:0 auto}
   .bio figure{position:sticky;top:96px;align-self:start}
   .bio figure img{width:100%;aspect-ratio:1023/1440;object-fit:cover}
   .bio figcaption{font-size:12px;color:var(--soft);margin-top:12px;letter-spacing:.04em}
@@ -74,7 +75,7 @@
 
   /* Band */
   .band{max-width:1240px;margin:0 auto}
-  .band h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,64px);line-height:1.05;margin-bottom:56px}
+  .band h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,64px);line-height:1.05;margin-bottom:clamp(32px,4vw,56px)}
   .members{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
   .member{padding:28px 20px 8px 0;border-right:1px solid var(--line)}
   .member + .member{padding-left:20px}
@@ -87,16 +88,20 @@
   .gallery{background:var(--ink);color:var(--bg)}
   .gallery .label{color:#a9a294}
   .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(8px,1.4vw,18px);max-width:1400px;margin:0 auto}
-  .grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.92)}
+  .grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.92);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .shot{display:block;padding:0;border:0;background:none;overflow:hidden;cursor:zoom-in;min-width:0}
+  .shot:hover img{transform:scale(1.03)}
+  .shot:focus-visible{outline:2px solid var(--wheat);outline-offset:4px}
+  .gal-note{font-size:12px;letter-spacing:.06em;color:#a9a294;margin-top:20px;text-align:center}
   .g1{grid-column:1/8;aspect-ratio:7/5}
   .g2{grid-column:8/13;aspect-ratio:1/1}
   .g3{grid-column:1/6;aspect-ratio:1/1}
-  @media (max-width:900px){.grid img{aspect-ratio:4/3}}
+  @media (max-width:900px){.grid .shot{aspect-ratio:4/3}}
   .g4{grid-column:6/13;aspect-ratio:7/5}
   .gallery-inner{max-width:1400px;margin:0 auto}
 
   /* Contact */
-  .contact{text-align:center}
+  .contact{text-align:center;padding-top:0}
   .contact h2{font-family:var(--serif);font-weight:300;font-size:clamp(44px,7vw,96px);line-height:1}
   .contact p{color:var(--soft);margin:22px auto 40px;max-width:46ch}
   .btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:16px 30px;border:1px solid var(--ink);transition:background .3s,color .3s}
@@ -154,11 +159,13 @@
   footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 
   /* Band: Medien und Links */
-  .media{margin-top:clamp(64px,8vw,110px)}
+  .media{margin-top:clamp(44px,5vw,72px)}
   .video-head h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(36px,5vw,64px);line-height:1}
   .embed{position:relative;overflow:hidden}
   .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .sp{height:352px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+  .sp{height:152px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+  .sp:has(iframe){border:0;background:transparent}
+  .sp .yt-circle{width:56px;height:56px}
   .sp-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:22px;padding:24px;background:none;border:0;color:var(--ink);cursor:pointer;font:inherit;text-align:left}
   .sp-btn .yt-circle{border-color:var(--ink);flex:none}
   .sp-btn:hover .yt-circle,.sp-btn:focus-visible .yt-circle{background:var(--ink);color:var(--bg);transform:scale(1.06)}
@@ -189,8 +196,47 @@
     .contact .links .btn{justify-content:center}
     .forms{grid-template-columns:1fr}
     .dates li{grid-template-columns:1fr}
-    .sp-btn{flex-direction:column;text-align:center}
+    .sp-btn{gap:16px;padding:16px}
+    .sp-s{font-size:18px}
   }
+
+  /* Lightbox */
+  .lb{border:0;padding:0;margin:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;background:rgba(20,18,15,.96);color:#f3efe6}
+  .lb::backdrop{background:rgba(20,18,15,.96)}
+  .lb[open]{display:flex;align-items:center;justify-content:center}
+  .lb figure{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:calc(100vw - 32px);padding:56px 0 24px}
+  .lb img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100dvh - 160px);object-fit:contain}
+  .lb figcaption{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:8px 24px;font-size:13px;color:#cfc8b8;text-align:center}
+  .lb-dl{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#f3efe6;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+  .lb button{position:absolute;background:none;border:0;color:#f3efe6;cursor:pointer;font:inherit}
+  .lb-x{top:16px;right:clamp(16px,3vw,32px);font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:8px 0}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:56px;line-height:1;padding:8px 12px;opacity:.75}
+  .lb-prev{left:clamp(4px,2vw,24px)}.lb-next{right:clamp(4px,2vw,24px)}
+  .lb button:hover{opacity:1}
+  .lb button:focus-visible,.lb-dl:focus-visible{outline:1px solid #f3efe6;outline-offset:4px}
+  @media (max-width:700px){
+    .lb img{max-width:calc(100vw - 32px)}
+    .lb-prev,.lb-next{top:auto;bottom:12px;transform:none;font-size:44px}
+    .lb figure{padding-bottom:72px}
+  }
+
+  /* Kontaktformular */
+  .cform{max-width:640px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:18px}
+  .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .cform label{display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);min-width:0}
+  .cform input[type=text],.cform input[type=email],.cform textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:10px 0;border-radius:0;width:100%}
+  .cform textarea{border:1px solid var(--ink);padding:12px;resize:vertical;min-height:140px}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--wheat)}
+  .cform .consent{flex-direction:row;align-items:flex-start;gap:12px;font-size:13px;letter-spacing:0;text-transform:none;line-height:1.5}
+  .cform .consent input{margin-top:3px;width:16px;height:16px;accent-color:var(--ink);flex:none}
+  .cform .consent a{color:var(--ink)}
+  .cform .send{align-self:flex-start;background:var(--ink);color:var(--bg);cursor:pointer;font-family:inherit}
+  .cform .send:hover{background:transparent;color:var(--ink)}
+  .cform .send[disabled]{opacity:.5;cursor:wait}
+  .cf-status{font-size:14px;color:var(--ink);margin:0!important;min-height:1.2em}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .contact p.more{margin:56px auto 24px}
+  @media (max-width:700px){.cform .row{grid-template-columns:1fr}.cform .send{align-self:stretch;justify-content:center}}
 </style>
 </head>
 <body>
@@ -226,7 +272,7 @@
     <div class="member reveal"><h3>Hermann</h3><p>Gitarre</p></div>
     <div class="member reveal"><h3>Christian</h3><p>Cajón, Didgeridoo</p></div>
     <div class="member reveal"><h3>Uli</h3><p>Keyboard</p></div>
-    <div class="member extra reveal"><h3>„Magic“ Yannick</h3><p>Ton</p></div>
+    <div class="member extra reveal"><h3>„Magic“ Yannick</h3><p>Ton, Bild</p></div>
   </div>
 
   <div class="media" id="video">
@@ -266,7 +312,7 @@
     <div class="forms">
       <a class="form reveal" href="https://docs.google.com/forms/d/1BTCyAbS2h6UofyMsu4oVJir3snmPD3QviyiL-ULL1F0/viewform" target="_blank" rel="noopener">
         <b>Auf dem Laufenden bleiben</b>
-        <span>Trag dich ein, und wir sagen dir Bescheid, wenn wir in deiner Nähe spielen.</span>
+        <span>Trag dich ein, und wir sagen dir Bescheid, wenn wir in deiner Nähe spielen, ein neues Release haben oder anderes Bahnbrechendes geschieht.</span>
         <i>Zum Formular</i>
       </a>
       <a class="form reveal" href="https://docs.google.com/forms/d/1rPqxkHI02L1N_CnLlnGkn_ol8EEHxyUcSgoXYgsOLfY/viewform" target="_blank" rel="noopener">
@@ -282,18 +328,19 @@
   <div class="gallery-inner">
     <div class="label reveal">Bilder</div>
     <div class="grid">
-      <img class="g1 reveal" src="images/feld-weite.jpg" alt="Die Band von hinten im Weizenfeld, Blick in die Abendsonne" loading="lazy">
-      <img class="g2 reveal" src="images/wiese-oben.jpg" alt="Die vier Musiker liegen sternförmig im Gras, von oben fotografiert" loading="lazy">
-      <img class="g3 reveal" src="images/treppe.jpg" alt="Die Band barfuß auf einer Steintreppe" loading="lazy" style="object-position:50% 30%">
-      <img class="g4 reveal" src="images/feld-abend.jpg" alt="Die Band im Weizenfeld bei Sonnenuntergang" loading="lazy">
+      <button class="shot g1 reveal" type="button" data-full="images/download/felden-weizenfeld-weite.jpg" aria-label="Foto vergrößern: Die Band von hinten im Weizenfeld, Blick in die Abendsonne"><img src="images/feld-weite.jpg" alt="Die Band von hinten im Weizenfeld, Blick in die Abendsonne" loading="lazy"></button>
+      <button class="shot g2 reveal" type="button" data-full="images/download/felden-wiese-von-oben.jpg" aria-label="Foto vergrößern: Die vier Musiker liegen sternförmig im Gras, von oben fotografiert"><img src="images/wiese-oben.jpg" alt="Die vier Musiker liegen sternförmig im Gras, von oben fotografiert" loading="lazy"></button>
+      <button class="shot g3 reveal" type="button" data-full="images/download/felden-treppe.jpg" aria-label="Foto vergrößern: Die Band barfuß auf einer Steintreppe"><img src="images/treppe.jpg" alt="Die Band barfuß auf einer Steintreppe" loading="lazy" style="object-position:50% 30%"></button>
+      <button class="shot g4 reveal" type="button" data-full="images/download/felden-weizenfeld-abend.jpg" aria-label="Foto vergrößern: Die Band im Weizenfeld bei Sonnenuntergang"><img src="images/feld-abend.jpg" alt="Die Band im Weizenfeld bei Sonnenuntergang" loading="lazy"></button>
     </div>
+    <p class="gal-note reveal">Zum Vergrößern und Herunterladen auf ein Foto klicken.</p>
   </div>
 </section>
 
 <section class="bio" id="geschichte">
   <figure class="reveal">
     <img src="images/treppe.jpg" alt="Die Band sitzt barfuß lachend auf einer alten Steintreppe" loading="lazy">
-    <figcaption>Heiner, Hermann, Christian und Uli</figcaption>
+    <figcaption>Hinten Hermann und Uli, vorne Christian und Heiner</figcaption>
   </figure>
   <div>
     <div class="label reveal">Geschichte</div>
@@ -322,13 +369,42 @@
 <section class="contact" id="kontakt">
   <div class="label reveal" style="justify-content:center">Kontakt</div>
   <h2 class="reveal">Hören wir uns.</h2>
-  <p class="reveal">Neuigkeiten, Konzerte und Anfragen – am schnellsten erreicht ihr uns auf Instagram. Unsere Musik gibt es auf YouTube und Spotify.</p>
+  <p class="reveal">Für Auftrittsanfragen, Kooperationen oder Sonstiges schreibt uns hier gern eine Nachricht.</p>
+  <form class="cform reveal" id="cform" novalidate>
+    <input type="hidden" name="access_key" value="WEB3FORMS-SCHLUESSEL-HIER-EINTRAGEN">
+    <input type="hidden" name="subject" value="Neue Nachricht über felden-Website">
+    <input type="hidden" name="from_name" value="felden Website">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="row">
+      <label for="cf-name">Name<input id="cf-name" name="name" type="text" autocomplete="name" required></label>
+      <label for="cf-mail">E-Mail<input id="cf-mail" name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <label for="cf-msg">Nachricht<textarea id="cf-msg" name="message" rows="6" required></textarea></label>
+    <label class="consent" for="cf-ok"><input id="cf-ok" name="einwilligung" type="checkbox" value="ja" required> <span>Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Nachricht verarbeitet werden. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</span></label>
+    <button class="btn send" type="submit">Nachricht senden</button>
+    <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+  </form>
+  <p class="reveal more">Neuigkeiten gibt es auf Instagram, unsere Musik auf YouTube und Spotify.</p>
   <div class="links reveal">
     <a class="btn" href="https://www.instagram.com/felden.music" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg> @felden.music</a>
     <a class="btn" href="https://www.youtube.com/@feldengreatmusic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg> YouTube</a>
     <a class="btn" href="https://open.spotify.com/artist/2TYIWhqs4LQytH0IXlrEBR" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.2 9.6c3.4-1 6.9-.7 9.8.9M7.8 12.6c2.8-.8 5.6-.5 8 .8M8.4 15.4c2.2-.6 4.3-.4 6.2.6"/></svg> Spotify</a>
   </div>
 </section>
+
+
+<dialog class="lb" id="lb" aria-label="Foto">
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption>
+      <span id="lb-cap"></span>
+      <a id="lb-dl" class="lb-dl" href="#" download>Foto herunterladen</a>
+    </figcaption>
+  </figure>
+  <button class="lb-x" type="button" aria-label="Schließen">Schließen</button>
+  <button class="lb-prev" type="button" aria-label="Vorheriges Foto">‹</button>
+  <button class="lb-next" type="button" aria-label="Nächstes Foto">›</button>
+</dialog>
 
 <footer>
   <span>© <span id="y">2026</span> felden</span>
@@ -377,6 +453,49 @@
     f.referrerPolicy = 'strict-origin-when-cross-origin';
     el.replaceChildren(f);
   }));
+
+
+  /* Lightbox: Fotos vergrößern und herunterladen */
+  (function(){
+    const lb = document.getElementById('lb'), img = document.getElementById('lb-img');
+    const cap = document.getElementById('lb-cap'), dl = document.getElementById('lb-dl');
+    const shots = [...document.querySelectorAll('.shot')];
+    let i = 0;
+    const show = n => {
+      i = (n + shots.length) % shots.length;
+      const s = shots[i], t = s.querySelector('img');
+      img.src = s.dataset.full; img.alt = t.alt; cap.textContent = t.alt;
+      dl.href = s.dataset.full; dl.setAttribute('download', s.dataset.full.split('/').pop());
+    };
+    shots.forEach((s, n) => s.addEventListener('click', () => { show(n); lb.showModal(); }));
+    lb.querySelector('.lb-x').addEventListener('click', () => lb.close());
+    lb.querySelector('.lb-prev').addEventListener('click', () => show(i - 1));
+    lb.querySelector('.lb-next').addEventListener('click', () => show(i + 1));
+    lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(i - 1); if (e.key === 'ArrowRight') show(i + 1); });
+    let x0 = null;
+    lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  })();
+
+  /* Kontaktformular über Web3Forms */
+  (function(){
+    const f = document.getElementById('cform'), st = document.getElementById('cf-status'), btn = f.querySelector('.send');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!f.checkValidity()) { st.textContent = 'Bitte fülle Name, E-Mail und Nachricht aus und bestätige die Einwilligung.'; f.reportValidity(); return; }
+      if (f.access_key.value.includes('HIER-EINTRAGEN')) { st.textContent = 'Das Formular ist noch nicht freigeschaltet. Schreib uns bis dahin gern auf Instagram.'; return; }
+      btn.disabled = true; st.textContent = 'Wird gesendet …';
+      try {
+        const r = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Accept':'application/json'}, body:new FormData(f)});
+        const j = await r.json();
+        if (j.success) { f.reset(); st.textContent = 'Danke! Deine Nachricht ist bei uns angekommen.'; }
+        else throw new Error(j.message);
+      } catch (err) {
+        st.textContent = 'Das hat leider nicht geklappt. Bitte versuch es später noch einmal oder schreib uns auf Instagram.';
+      } finally { btn.disabled = false; }
+    });
+  })();
 
   /* Termine aus termine.js anzeigen */
   (function(){
