@@ -2,7 +2,7 @@
 
 Statische Seite, bereit für GitHub Pages.
 
-Die Seite ist unter `https://felden-music.github.io/felden/` erreichbar.
+Die Seite ist unter `https://felden-music.github.io/version1/` erreichbar.
 
 ## Datenschutz
 - Schriften liegen lokal in `fonts/` – keine Verbindung zu Google Fonts.
