@@ -17,5 +17,5 @@
 
 window.FELDEN_TERMINE = [
   // { datum: "2026-11-21", uhrzeit: "20:00", ort: "Name der Location", stadt: "Stuttgart", link: "" },
-  { datum: "2026-12-19", uhrzeit: "20:00", ort: "Cooler Ort", stadt: "Tübingen", link: "" },
+  { datum: "2026-12-19", uhrzeit: "20:00", ort: "Pausenhof", stadt: "Tübingen", link: "" },
 ];
