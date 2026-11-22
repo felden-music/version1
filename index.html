@@ -237,6 +237,16 @@
   .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
   .contact p.more{margin:56px auto 24px}
   @media (max-width:700px){.cform .row{grid-template-columns:1fr}.cform .send{align-self:stretch;justify-content:center}}
+  
+    /* Fotos herunterladen */
+  .downloads{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px clamp(24px,5vw,80px);margin-top:clamp(48px,6vw,80px);padding-top:32px;border-top:1px solid #3a3630}
+  .downloads h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3vw,40px);line-height:1.1}
+  .downloads p{color:#a9a294;font-size:14px;margin-top:10px;max-width:36ch}
+  .downloads ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-content:start}
+  .downloads a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid #3a3630;color:inherit;text-decoration:none;font-size:15px;transition:color .3s,padding .3s}
+  .downloads a span{font-size:11px;letter-spacing:.22em;color:#a9a294}
+  .downloads a:hover,.downloads a:focus-visible{color:var(--wheat);padding-left:6px}
+  @media (max-width:700px){.downloads,.downloads ul{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -334,6 +344,21 @@
       <!-- <button class="shot g4 reveal" type="button" data-full="images/download/felden-weizenfeld-abend.webp" aria-label="Foto vergrößern: Die Band im Weizenfeld bei Sonnenuntergang"><img src="images/feld-abend.webp" alt="Die Band im Weizenfeld bei Sonnenuntergang" loading="lazy"></button> -->
     </div>
     <p class="gal-note reveal">Zum Vergrößern und Herunterladen auf ein Foto klicken.</p>
+        <div class="downloads reveal">
+      <div>
+        <h3>Fotos herunterladen</h3>
+        <p>Bandfotos in voller Auflösung, zum Beispiel für Presse und Veranstalter.</p>
+      </div>
+      <ul>
+        <li><a href="images/download/Bandfoto%2001.jpg" download>Bandfoto 01 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2002.jpg" download>Bandfoto 02 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2003.jpg" download>Bandfoto 03 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2004.JPG" download>Bandfoto 04 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2005.JPG" download>Bandfoto 05 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2006.JPG" download>Bandfoto 06 <span>JPG</span></a></li>
+        <li><a href="images/download/Bandfoto%2007.jpg" download>Bandfoto 07 <span>JPG</span></a></li>
+      </ul>
+    </div>
   </div>
 </section>
 
