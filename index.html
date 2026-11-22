@@ -411,13 +411,13 @@
       outline-offset: 4px
     }
 
-    .gal-note {
+    /* .gal-note {
       font-size: 12px;
       letter-spacing: .06em;
       color: #a9a294;
       margin-top: 20px;
       text-align: center
-    }
+    } */
 
     .g1 {
       grid-column: 1/8;
@@ -1215,18 +1215,86 @@
       }
     }
 
-     /* Fotos herunterladen */
-  .downloads{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(24px,5vw,80px);align-items:center;margin-top:clamp(48px,6vw,80px);padding-top:32px;border-top:1px solid #3a3630}
-  .downloads h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3vw,40px);line-height:1.1}
-  .downloads p{color:#a9a294;font-size:14px;margin-top:10px;max-width:36ch}
-  .dl-all{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:20px;align-items:center;padding:24px 28px;border:1px solid currentColor;color:inherit;text-decoration:none;transition:background .3s,color .3s}
-  .dl-all svg{grid-row:1/3;width:32px;height:32px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-  .dl-t{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);line-height:1.15}
-  .dl-m{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#a9a294;margin-top:4px;transition:color .3s}
-  .dl-all:hover,.dl-all:focus-visible{background:var(--bg);color:var(--ink)}
-  .dl-all:hover .dl-m,.dl-all:focus-visible .dl-m{color:var(--soft)}
-  .dl-all:hover svg{transform:translateY(3px)}
-  @media (max-width:700px){.downloads{grid-template-columns:1fr}}
+    /* Fotos herunterladen */
+    .downloads {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px clamp(24px, 5vw, 80px);
+      align-items: center;
+      margin-top: clamp(48px, 6vw, 80px);
+      padding-top: 32px;
+      border-top: 1px solid #3a3630
+    }
+
+    .downloads h3 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.1
+    }
+
+    .downloads p {
+      color: #a9a294;
+      font-size: 14px;
+      margin-top: 10px;
+      max-width: 36ch
+    }
+
+    .dl-all {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 20px;
+      align-items: center;
+      padding: 24px 28px;
+      border: 1px solid currentColor;
+      color: inherit;
+      text-decoration: none;
+      transition: background .3s, color .3s
+    }
+
+    .dl-all svg {
+      grid-row: 1/3;
+      width: 32px;
+      height: 32px;
+      transition: transform .4s cubic-bezier(.2, .7, .2, 1)
+    }
+
+    .dl-t {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.15
+    }
+
+    .dl-m {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #a9a294;
+      margin-top: 4px;
+      transition: color .3s
+    }
+
+    .dl-all:hover,
+    .dl-all:focus-visible {
+      background: var(--bg);
+      color: var(--ink)
+    }
+
+    .dl-all:hover .dl-m,
+    .dl-all:focus-visible .dl-m {
+      color: var(--soft)
+    }
+
+    .dl-all:hover svg {
+      transform: translateY(3px)
+    }
+
+    @media (max-width:700px) {
+      .downloads {
+        grid-template-columns: 1fr
+      }
+    }
   </style>
 </head>
 
@@ -1355,24 +1423,30 @@
       <div class="label reveal">Bilder</div>
       <div class="grid">
         <button class="shot g1 reveal" type="button" data-full="images/download/Bandfoto 04.JPG"
-          aria-label="Die Band von hinten im Weizenfeld, Blick in die Abendsonne"><img
-            src="images/feld-weite.jpg" alt="Die Band von hinten im Weizenfeld, Blick in die Abendsonne"
-            loading="lazy"></button>
+          aria-label="Die Band von hinten im Weizenfeld, Blick in die Abendsonne"><img src="images/feld-weite.jpg"
+            alt="Die Band von hinten im Weizenfeld, Blick in die Abendsonne" loading="lazy"></button>
         <button class="shot g2 reveal" type="button" data-full="images/download/Bandfoto 07.jpg"
           aria-label="Die vier Musiker liegen sternförmig im Gras, von oben fotografiert"><img
             src="images/wiese-oben.jpg" alt="Die vier Musiker liegen sternförmig im Gras, von oben fotografiert"
             loading="lazy"></button>
         <!-- <button class="shot g3 reveal" type="button" data-full="images/download/felden-treppe.jpg" aria-label="Foto vergrößern: Die Band barfuß auf einer Steintreppe"><img src="images/treppe.jpg" alt="Die Band barfuß auf einer Steintreppe" loading="lazy" style="object-position:50% 30%"></button> -->
         <!-- <button class="shot g4 reveal" type="button" data-full="images/download/felden-weizenfeld-abend.webp" aria-label="Foto vergrößern: Die Band im Weizenfeld bei Sonnenuntergang"><img src="images/feld-abend.webp" alt="Die Band im Weizenfeld bei Sonnenuntergang" loading="lazy"></button> -->
-        <h3>Fotos herunterladen</h3>
-        <p>Alle Bandfotos in voller Auflösung, zum Beispiel für Presse und Veranstalter.</p>
       </div>
-      <a class="dl-all" href="images/download/felden-bandfotos.zip" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6.5 10.5 12 16l5.5-5.5M5 20h14"/></svg>
-        <span class="dl-t">Alle Fotos herunterladen</span>
-        <span class="dl-m" id="dl-meta">7 Fotos · ZIP</span>
-      </a>
-    </div>
+      <!-- <p class="gal-note reveal">Zum Vergrößern und Herunterladen auf ein Foto klicken.</p> -->
+      <div class="downloads reveal">
+        <div>
+          <h3>Fotos herunterladen</h3>
+          <p>Alle Bandfotos in voller Auflösung, zum Beispiel für Presse und Veranstalter.</p>
+        </div>
+        <a class="dl-all" href="images/download/felden-bandfotos.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4v12M6.5 10.5 12 16l5.5-5.5M5 20h14" />
+          </svg>
+          <span class="dl-t">Alle Fotos herunterladen</span>
+          <span class="dl-m" id="dl-meta">7 Fotos · ZIP</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1593,16 +1667,16 @@
         list.appendChild(li);
       });
     })();
-      /* Größe der ZIP-Datei automatisch anzeigen */
-  (async () => {
-    const a = document.querySelector('.dl-all'), m = document.getElementById('dl-meta');
-    if (!a || !m) return;
-    try {
-      const r = await fetch(a.getAttribute('href'), {method: 'HEAD'});
-      const n = Number(r.headers.get('content-length'));
-      if (r.ok && n) m.textContent += ' · ' + (n / 1048576).toFixed(n > 1e7 ? 0 : 1).replace('.', ',') + ' MB';
-    } catch (e) {}
-  })();
+    /* Größe der ZIP-Datei automatisch anzeigen */
+    (async () => {
+      const a = document.querySelector('.dl-all'), m = document.getElementById('dl-meta');
+      if (!a || !m) return;
+      try {
+        const r = await fetch(a.getAttribute('href'), { method: 'HEAD' });
+        const n = Number(r.headers.get('content-length'));
+        if (r.ok && n) m.textContent += ' · ' + (n / 1048576).toFixed(n > 1e7 ? 0 : 1).replace('.', ',') + ' MB';
+      } catch (e) { }
+    })();
   </script>
 </body>
 
